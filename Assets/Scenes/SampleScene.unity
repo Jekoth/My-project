@@ -171,6 +171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  jumpForce: 90
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 311
   cameraContainer: {fileID: 941360315}
   minXLook: -80
   maxXLook: 80
@@ -204,7 +208,7 @@ CapsuleCollider:
   m_Radius: 0.25
   m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!114 &16523531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +259,19 @@ MonoBehaviour:
     m_ActionId: 8334c787-fcef-40f5-bce0-b73d8cf07131
     m_ActionName: Main/AltAction[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 16523528}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 65357574-99ec-41ce-ba4b-a2b61d560b6b
     m_ActionName: Main/Jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -553,6 +569,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf880c3bba403ae4a9410bc4c061aaae, type: 2}
+    - target: {fileID: -7029948723529949830, guid: 5bc2aef3a8643c0409988e1cc8381570, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4292154010595695564, guid: 5bc2aef3a8643c0409988e1cc8381570, type: 3}
       propertyPath: m_LocalScale.x
       value: 1000
@@ -568,6 +588,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5bc2aef3a8643c0409988e1cc8381570, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5bc2aef3a8643c0409988e1cc8381570, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364076815127437966, guid: 5bc2aef3a8643c0409988e1cc8381570, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6014684558238675576, guid: 5bc2aef3a8643c0409988e1cc8381570, type: 3}
       propertyPath: m_Materials.Array.data[0]
