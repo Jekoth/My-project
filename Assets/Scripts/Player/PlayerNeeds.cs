@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class PlayerNeeds : MonoBehaviour
+public class PlayerNeeds : MonoBehaviour, IDamagable
 {
     public Need health;
     public Need hunger;
@@ -80,12 +80,13 @@ public class PlayerNeeds : MonoBehaviour
     }
 
     //Ottaa vahinkoa
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
         health.Subtrack(amount);
         onTakeDamage?.Invoke();
     }
 
+    //Pelaaja kuoli
     public void Die()
     {
         Debug.Log("Player is dead");
@@ -119,4 +120,9 @@ public class Need
     {
         return currentValue / maxValue;
     }
+}
+
+public interface IDamagable
+{
+    void TakeDamage(int damageAmount);
 }
