@@ -8,9 +8,8 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Yusei Magic
   fontNames:
-  - Yusei Magic
+  - Button Yusei Magic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
