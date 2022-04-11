@@ -16,6 +16,6 @@ MonoBehaviour:
   Description: Good hatchet for cutting
   type: 1
   icon: {fileID: 21300000, guid: 431d3db8420fa0b4fbc0ebe9c9b0e4a9, type: 3}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 5930507764977993482, guid: 41ae0ed1d5bfc9f4fa923a61556f6639, type: 3}
   canStackItem: 0
   maxStackAmount: 0

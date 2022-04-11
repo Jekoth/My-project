@@ -16,6 +16,6 @@ MonoBehaviour:
   Description: Use for Crafting
   type: 0
   icon: {fileID: 21300000, guid: f7d15bafcb771bf4aae1bcdddfe8e8e3, type: 3}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 4079004482502815008, guid: d0afc545002cf124cb4ef3c97d1caeb4, type: 3}
   canStackItem: 1
   maxStackAmount: 99

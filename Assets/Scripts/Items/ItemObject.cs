@@ -13,6 +13,9 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
+        //Lis‰‰ itemin inventoriin vuorovaikutuksen j‰lkeen
+        Inventory.instance.AddItem(item);
+        //Poista itemin
         Destroy(gameObject);
     }
 }
