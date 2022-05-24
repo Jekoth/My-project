@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI selectedItemStatValue;
     public GameObject useButton;
     public GameObject equipButton;
-    public GameObject unequipButton;
+    public GameObject unEquipButton;
     public GameObject dropButton;
 
     private int currentEquipIndex;
@@ -228,10 +228,10 @@ public class Inventory : MonoBehaviour
         //Aseta käyttöpainike
         useButton.SetActive(selectedItem.item.type == Itemtype.Consumable);
         //Aseta varustepainike                                             //&& itemin ei ole tällä hetkellä varustettu
-        equipButton.SetActive(selectedItem.item.type == Itemtype.Equipable && uiSlots[index].equipped);
+        equipButton.SetActive(selectedItem.item.type == Itemtype.Equipable && !uiSlots[index].equipped);
 
         //Aseta unequip-painike                                            //&& itemi on tällä hetkellä varustettu
-        unequipButton.SetActive(selectedItem.item.type == Itemtype.Equipable && uiSlots[index].equipped);
+        unEquipButton.SetActive(selectedItem.item.type == Itemtype.Equipable && uiSlots[index].equipped);
 
         //Aseta pudotuspainike
         dropButton.SetActive(true);
@@ -249,7 +249,7 @@ public class Inventory : MonoBehaviour
         //Poista painikkeet käytöstä
         useButton.SetActive(false);
         equipButton.SetActive(false);
-        unequipButton.SetActive(false);
+        unEquipButton.SetActive(false);
         dropButton.SetActive(false);
     }
 
@@ -275,18 +275,35 @@ public class Inventory : MonoBehaviour
 
     public void OnEquipButton()
     {
+        //CurrentEquipIndex on tällä hetkellä varustetun itemin indeksi
+        //Tarkista, onko jokin tuote varustettu, jos on, poista nykyinen itemi
+        if (uiSlots[currentEquipIndex].equipped)
+            UnEquip(currentEquipIndex);
 
+        uiSlots[selectedItemIndex].equipped = true;
+        currentEquipIndex = selectedItemIndex;
+        //Kutsuu funktion EquipNewItem kohde Equip Managerista
+        EquipManager.instance.EquipNewItem(selectedItem.item);
+        //Päivitä UI inventory
+        UpdateUI();
+        //Päivitä valitun kohteen esikatseluikkunan painikkeet "equip" unequip-tilaan
+        SelectItem(selectedItemIndex);
     }
 
     //Esine slotti, jonka haluamme tyhjentää
     void UnEquip(int index)
     {
-
+        uiSlots[index].equipped = false;
+        EquipManager.instance.UnEquipItem();
+        UpdateUI();
+        //Jos tämä on tällä hetkellä valittu kohde, jos on, valittuna
+        if (selectedItemIndex == index)
+            SelectItem(index);
     }
 
     public void OnUnequipButton()
     {
-
+        UnEquip(selectedItemIndex);
     }
 
     public void OnDropButton()
